@@ -1,0 +1,342 @@
+/* src/styles/App.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron&family=VT323&display=swap");
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Press Start 2P", cursive;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #0b0b0b;
+  transition: background-color 0.5s ease;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 4rem;
+  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  text-shadow: 3px 3px #000000;
+  z-index: 10;
+  margin-bottom: 2rem;
+}
+
+.letter {
+  opacity: 0;
+  display: inline-block;
+  animation: popIn 0.3s forwards;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  transition: color 0.25s ease, transform 0.25s ease;
+  cursor: default;
+}
+
+.letter.visible {
+  opacity: 1;
+}
+
+/* Hover effect for letters */
+.letter.visible:hover {
+  animation: none;
+  color: #fff7a1 !important;
+  text-shadow: 0 0 8px #fff7a1, 0 0 15px #ffd700;
+  transform: scale(1.15);
+}
+
+/* Pop-in animation for letters */
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Nav buttons positioned at corners */
+.nav-corner {
+  position: absolute;
+  z-index: 10;
+}
+
+.top-left {
+  top: 30px;
+  left: 30px;
+}
+.top-right {
+  top: 30px;
+  right: 30px;
+}
+.bottom-left {
+  bottom: 30px;
+  left: 30px;
+}
+.bottom-right {
+  bottom: 30px;
+  right: 30px;
+}
+
+/* Nav button style */
+.nav-button {
+  font-size: 2rem;
+  background: #1a1a1a;
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 1.8rem 3rem;
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px #fff;
+  border-radius: 10px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Nav button hover */
+.nav-button:hover {
+  background: #ffd700;
+  color: #1a1a1a;
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ffd700;
+  letter-spacing: 2px;
+}
+
+/* Loader button at top center */
+.eclipse-loader {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #ffd700;
+  animation: glow 2s infinite ease-in-out;
+  box-shadow: 0 0 20px #ffd700;
+  z-index: 20;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #ffd700;
+  }
+  50% {
+    box-shadow: 0 0 40px #ffd700;
+  }
+}
+
+/* Spin animation */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+/* Loader hover */
+.eclipse-loader:hover {
+  box-shadow: 0 0 40px #ffd700, 0 0 55px #ffd700;
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Center content container */
+.center-content {
+  text-align: center;
+  max-width: 90vw;
+  z-index: 10;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Subtitle styling */
+.subtitle {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.5rem;
+  color: #ffd700;
+  text-shadow: 1px 1px 2px #000;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+/* Description styling */
+.description {
+  font-family: "VT323", monospace;
+  font-size: 1.25rem;
+  color: #eeeeee;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  user-select: none;
+}
+
+/* Preview carousel container */
+.preview-carousel {
+  width: 90%;
+  max-width: 800px;
+  height: 300px;
+  background: #111;
+  margin-top: 2rem;
+  overflow: hidden;
+  border: 2px solid #ffd700;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 0 15px #ffd70088;
+}
+
+/* Preview carousel items */
+.preview-carousel .preview-item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  opacity: 0;
+  transition: all 1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ffd700;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Active carousel item */
+.preview-carousel .preview-item.active {
+  left: 0;
+  opacity: 1;
+}
+
+/* Carousel item hover */
+.preview-carousel .preview-item:hover {
+  box-shadow: 0 0 25px #ffd700cc;
+  transform: scale(1.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 15;
+  color: #fff7a1;
+  text-decoration: none;
+}
+
+/* Center buttons container */
+.center-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Main button styling */
+.main-button {
+  background: #000000;
+  color: #ffd700;
+  font-size: 1.25rem;
+  font-family: "Press Start 2P", cursive;
+  padding: 1rem 1.5rem;
+  border: 2px solid #ffd700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px #ffd700;
+  user-select: none;
+}
+
+.main-button:hover {
+  background: #ffd700;
+  color: #000000;
+  box-shadow: 0 0 30px #ffd700;
+  transform: scale(1.05);
+}
+
+/* Subtle graphical overlay pattern */
+.graphics-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 4px,
+    rgba(255, 255, 255, 0.03) 4px,
+    rgba(255, 255, 255, 0.03) 8px
+  );
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .nav-button {
+    font-size: 1.5rem;
+    padding: 1.2rem 2rem;
+  }
+
+  .main-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .nav-button {
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+  }
+}
